@@ -73,7 +73,15 @@ Using `ggplot`, visualize `price` vs `carat` with points. What trend do you obse
 
 ```{r q3-task}
 ## TODO: Complete this code
-ggplot(diamonds)
+ggplot(            # 1. Starting a ggplot
+  data = diamonds  # 2. Dataset to visualize
+) +                # 3. Adding elements to the plot
+  geom_point(      # 4. Geometry
+    mapping = aes( # 5. `Aes`thetic mapping
+      x = carat,   # 5.1. Mapping the `x` variable
+      y = price    # 5.2. Mapping the `y` variable
+    )
+  )
 ```
 
 **Observations**:
@@ -107,6 +115,8 @@ As with any R function, we can consult the documentation to learn more.
 
 Look up the documentation for `geom_point()`, and scroll down to the *Aesthetics* section. What aesthetics (other than `x` and `y`) does `geom_point()` accept?
 
+Colour, fill, group, shape, size, stroke
+
 ### __q5__ Visualize a third variable
 
 Adapt your code from q3 to visualize `price`, `carat`, and `cut` simultaneously.
@@ -116,11 +126,28 @@ Adapt your code from q3 to visualize `price`, `carat`, and `cut` simultaneously.
 ```{r q4-task}
 ## TODO: Complete this code
 ggplot(diamonds)
+ggplot(            # 1. Starting a ggplot
+  diamonds, (aes(x = carat))  # 2. Dataset to visualize
+) +                # 3. Adding elements to the plot
+  geom_point(      # 4. Geometry
+    aes( 
+      y = depth,
+      color = "red"
+    )
+  + 
+  geom_point(
+    aes(
+      y = depth,
+      color = "blue"
+      
+    )
+  )
+  )
 ```
 
 **Observations**:
 
-- (Write your observations here!)
+-
 
 <!-- include-exit-ticket -->
 # Exit Ticket
