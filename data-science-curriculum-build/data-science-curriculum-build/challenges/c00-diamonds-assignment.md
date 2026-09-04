@@ -98,14 +98,17 @@ document your observations.
 ``` r
 ## TASK: Plot `price` vs `carat` below
 ## Your code here!
-ggplot(            # 1. Starting a ggplot
-  data = diamonds  # 2. Dataset to visualize
-) +                # 3. Adding elements to the plot
-  geom_point(      # 4. Geometry
-    mapping = aes( # 5. `Aes`thetic mapping
-      x = price,   # 5.1. Mapping the `x` variable
-      y = carat    # 5.2. Mapping the `y` variable
+ggplot(
+  data = diamonds
+) +
+  geom_point(
+    mapping = aes(
+      x = carat,
+      y = price,
     )
+  ) +
+  labs(
+    title = "Diamond Price vs. Carat"
   )
 ```
 
@@ -113,22 +116,29 @@ ggplot(            # 1. Starting a ggplot
 
 **Observations**:
 
-- (Write your observations here!)
+- There seem to be large increases in price when the tenths digit of the
+  carat value increases to 0 or 5
+- There seems to be a strong positive correlation between the price of
+  the diamond and the carat
+- If a diamond is small enough, it costs less than 1000
 
 ### **q2** Create a visualization showing variables `carat`, `price`, and `cut` simultaneously. Experiment with which variable you assign to which aesthetic (`x`, `y`, etc.) to find an effective visual.
 
 ``` r
 ## TASK: Plot `price`, `carat`, and `cut` below
 ## Your code here!
-ggplot(            # 1. Starting a ggplot
-  data = diamonds  # 2. Dataset to visualize
-) +                # 3. Adding elements to the plot
-  geom_point(      # 4. Geometry
-    mapping = aes( # 5. `Aes`thetic mapping
-      x = price,   # 5.1. Mapping the `x` variable
-      y = carat,    # 5.2. Mapping the `y` variable
+ggplot(
+  data = diamonds
+) +
+  geom_point(
+    mapping = aes(
+      x = carat,
+      y = price,
       color = cut
     )
+  ) +
+  labs(
+    title = "Diamond Price vs. Carat by Cut"
   )
 ```
 
@@ -136,7 +146,12 @@ ggplot(            # 1. Starting a ggplot
 
 **Observations**:
 
-- (Write your observations here!)
+- It seems a lot easier to visualize dense data when grouping by color
+  than by shape
+- Carat seems to be a larger factor in determining the price of a
+  diamond than cut
+- Ideal cuts seem to fetch slightly higher prices than very good cuts,
+  which in turn get slightly higher prices than fair cuts
 
 # Communication
 
