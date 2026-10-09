@@ -1,31 +1,49 @@
 ---
 title: "Antibiotics"
-author: "(Your name here)"
-date: 2020-
+author: "Joseph Vazhaeparampil"
+date: 10-3-2026
 output:
   github_document
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
-*Purpose*: Creating effective data visualizations is an *iterative* process; very rarely will the first graph you make be the most effective. The most effective thing you can do to be successful in this iterative process is to *try multiple graphs* of the same data.
+*Purpose*: Creating effective data visualizations is an *iterative*
+process; very rarely will the first graph you make be the most
+effective. The most effective thing you can do to be successful in this
+iterative process is to *try multiple graphs* of the same data.
 
-Furthermore, judging the effectiveness of a visual is completely dependent on *the question you are trying to answer*. A visual that is totally ineffective for one question may be perfect for answering a different question.
+Furthermore, judging the effectiveness of a visual is completely
+dependent on *the question you are trying to answer*. A visual that is
+totally ineffective for one question may be perfect for answering a
+different question.
 
-In this challenge, you will practice *iterating* on data visualization, and will anchor the *assessment* of your visuals using two different questions.
+In this challenge, you will practice *iterating* on data visualization,
+and will anchor the *assessment* of your visuals using two different
+questions.
 
-*Note*: Please complete your initial visual design **alone**. Work on both of your graphs alone, and save a version to your repo *before* coming together with your team. This way you can all bring a diversity of ideas to the table!
+*Note*: Please complete your initial visual design **alone**. Work on
+both of your graphs alone, and save a version to your repo *before*
+coming together with your team. This way you can all bring a diversity
+of ideas to the table!
 
 <!-- include-rubric -->
+
 # Grading Rubric
+
 <!-- -------------------------------------------------- -->
 
-Unlike exercises, **challenges will be graded**. The following rubrics define how you will be graded, both on an individual and team basis.
+Unlike exercises, **challenges will be graded**. The following rubrics
+define how you will be graded, both on an individual and team basis.
 
 ## Individual
+
 <!-- ------------------------- -->
 
 | Category | Needs Improvement | Satisfactory |
-|----------|----------------|--------------|
-| Effort | Some task __q__'s left unattempted | All task __q__'s attempted |
+|------------------|-----------------------------|-------------------------|
+| Effort | Some task **q**'s left unattempted | All task **q**'s attempted |
 | Observed | Did not document observations, or observations incorrect | Documented correct observations based on analysis |
 | Supported | Some observations not clearly supported by analysis | All observations clearly supported by analysis (table, graph, etc.) |
 | Assessed | Observations include claims not supported by the data, or reflect a level of certainty not warranted by the data | Observations are appropriately qualified by the quality & relevance of the data and (in)conclusiveness of the support |
@@ -33,19 +51,31 @@ Unlike exercises, **challenges will be graded**. The following rubrics define ho
 | Code Styled | Violations of the [style guide](https://style.tidyverse.org/) hinder readability | Code sufficiently close to the [style guide](https://style.tidyverse.org/) |
 
 ## Submission
+
 <!-- ------------------------- -->
 
-Make sure to commit both the challenge report (`report.md` file) and supporting files (`report_files/` folder) when you are done! Then submit a link to Canvas. **Your Challenge submission is not complete without all files uploaded to GitHub.**
-
+Make sure to commit both the challenge report (`report.md` file) and
+supporting files (`report_files/` folder) when you are done! Then submit
+a link to Canvas. **Your Challenge submission is not complete without
+all files uploaded to GitHub.**
 
 ```{r setup}
 library(tidyverse)
 library(ggrepel)
 ```
 
-*Background*: The data[1] we study in this challenge report the [*minimum inhibitory concentration*](https://en.wikipedia.org/wiki/Minimum_inhibitory_concentration) (MIC) of three drugs for different bacteria. The smaller the MIC for a given drug and bacteria pair, the more practical the drug is for treating that particular bacteria. An MIC value of *at most* 0.1 is considered necessary for treating human patients.
+*Background*: The data[1] we study in this challenge report the
+[*minimum inhibitory
+concentration*](https://en.wikipedia.org/wiki/Minimum_inhibitory_concentration)
+(MIC) of three drugs for different bacteria. The smaller the MIC for a
+given drug and bacteria pair, the more practical the drug is for
+treating that particular bacteria. An MIC value of *at most* 0.1 is
+considered necessary for treating human patients.
 
-These data report MIC values for three antibiotics---penicillin, streptomycin, and neomycin---on 16 bacteria. Bacteria are categorized into a genus based on a number of features, including their resistance to antibiotics.
+These data report MIC values for three antibiotics---penicillin,
+streptomycin, and neomycin---on 16 bacteria. Bacteria are categorized
+into a genus based on a number of features, including their resistance
+to antibiotics.
 
 ```{r load}
 ## NOTE: If you extracted all challenges to the same location,
@@ -58,104 +88,258 @@ df_antibiotics %>% knitr::kable()
 ```
 
 # Visualization
+
 <!-- -------------------------------------------------- -->
 
-### __q1__ Prototype 5 visuals
+### **q1** Prototype 5 visuals
 
-To start, construct **5 qualitatively different visualizations of the data** `df_antibiotics`. These **cannot** be simple variations on the same graph; for instance, if two of your visuals could be made identical by calling `coord_flip()`, then these are *not* qualitatively different.
+To start, construct **5 qualitatively different visualizations of the
+data** `df_antibiotics`. These **cannot** be simple variations on the
+same graph; for instance, if two of your visuals could be made identical
+by calling `coord_flip()`, then these are *not* qualitatively different.
 
-For all five of the visuals, you must show information on *all 16 bacteria*. For the first two visuals, you must *show all variables*.
+For all five of the visuals, you must show information on *all 16
+bacteria*. For the first two visuals, you must *show all variables*.
 
-*Hint 1*: Try working quickly on this part; come up with a bunch of ideas, and don't fixate on any one idea for too long. You will have a chance to refine later in this challenge.
+*Hint 1*: Try working quickly on this part; come up with a bunch of
+ideas, and don't fixate on any one idea for too long. You will have a
+chance to refine later in this challenge.
 
-*Hint 2*: The data `df_antibiotics` are in a *wide* format; it may be helpful to `pivot_longer()` the data to make certain visuals easier to construct.
+*Hint 2*: The data `df_antibiotics` are in a *wide* format; it may be
+helpful to `pivot_longer()` the data to make certain visuals easier to
+construct.
 
 #### Visual 1 (All variables)
 
-In this visual you must show *all three* effectiveness values for *all 16 bacteria*. This means **it must be possible to identify each of the 16 bacteria by name.** You must also show whether or not each bacterium is Gram positive or negative.
+In this visual you must show *all three* effectiveness values for *all
+16 bacteria*. This means **it must be possible to identify each of the
+16 bacteria by name.** You must also show whether or not each bacterium
+is Gram positive or negative.
 
 ```{r q1.1}
 # WRITE YOUR CODE HERE
+df_long <- df_antibiotics |>
+  pivot_longer(
+    cols = c(penicillin, streptomycin, neomycin),
+    names_to = "antibiotic",
+    values_to = "effectiveness"
+  )
+
+ggplot(df_long, aes(x = bacteria, y = effectiveness, fill = antibiotic)) +
+  geom_col(position = "dodge") +
+  facet_wrap(~ gram) +
+  scale_y_log10() +
+  labs(
+    x = "Bacteria",
+    y = "Effectiveness",
+    fill = "Antibiotic"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 90, hjust = 1)
+  )
 ```
 
 #### Visual 2 (All variables)
 
-In this visual you must show *all three* effectiveness values for *all 16 bacteria*. This means **it must be possible to identify each of the 16 bacteria by name.** You must also show whether or not each bacterium is Gram positive or negative.
+In this visual you must show *all three* effectiveness values for *all
+16 bacteria*. This means **it must be possible to identify each of the
+16 bacteria by name.** You must also show whether or not each bacterium
+is Gram positive or negative.
 
-Note that your visual must be *qualitatively different* from *all* of your other visuals.
+Note that your visual must be *qualitatively different* from *all* of
+your other visuals.
 
 ```{r q1.2}
-# WRITE YOUR CODE HERE
+ggplot(df_long, aes(x = antibiotic, y = bacteria, fill = effectiveness)) +
+  geom_tile() +
+  facet_grid(gram ~ ., scales = "free_y", space = "free_y") +
+  scale_fill_continuous(trans = "log10") +
+  labs(
+    x = "Antibiotic",
+    y = "Bacteria",
+    fill = "Effectiveness (log scale)"
+  )
 ```
 
 #### Visual 3 (Some variables)
 
-In this visual you may show a *subset* of the variables (`penicillin`, `streptomycin`, `neomycin`, `gram`), but you must still show *all 16 bacteria*.
+In this visual you may show a *subset* of the variables (`penicillin`,
+`streptomycin`, `neomycin`, `gram`), but you must still show *all 16
+bacteria*.
 
-Note that your visual must be *qualitatively different* from *all* of your other visuals.
+Note that your visual must be *qualitatively different* from *all* of
+your other visuals.
 
 ```{r q1.3}
-# WRITE YOUR CODE HERE
+df_long2 <- df_antibiotics |>
+  pivot_longer(
+    cols = c(penicillin, streptomycin, neomycin),
+    names_to = "antibiotic",
+    values_to = "effectiveness"
+  )
+
+ggplot(
+  df_long2,
+  aes(
+    x = antibiotic,
+    y = effectiveness,
+    group = bacteria,
+    color = bacteria,
+    linetype = gram
+  )
+) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 2) +
+  scale_y_log10() +
+  labs(
+    x = "Antibiotic",
+    y = "Effectiveness",
+    color = "Bacteria",
+    linetype = "Gram"
+  ) +
+  theme_minimal()
 ```
 
 #### Visual 4 (Some variables)
 
-In this visual you may show a *subset* of the variables (`penicillin`, `streptomycin`, `neomycin`, `gram`), but you must still show *all 16 bacteria*.
+In this visual you may show a *subset* of the variables (`penicillin`,
+`streptomycin`, `neomycin`, `gram`), but you must still show *all 16
+bacteria*.
 
-Note that your visual must be *qualitatively different* from *all* of your other visuals.
+Note that your visual must be *qualitatively different* from *all* of
+your other visuals.
 
 ```{r q1.4}
-# WRITE YOUR CODE HERE
+ggplot(
+  df_antibiotics,
+  aes(
+    x = penicillin,
+    y = streptomycin,
+    color = gram,
+    label = bacteria
+  )
+) +
+  geom_point(size = 3) +
+  geom_text(vjust = -0.7, size = 3) +
+  scale_x_log10() +
+  scale_y_log10() +
+  labs(
+    x = "Penicillin effectiveness (log scale)",
+    y = "Streptomycin effectiveness (log scale)",
+    color = "Gram"
+  )
 ```
 
 #### Visual 5 (Some variables)
 
-In this visual you may show a *subset* of the variables (`penicillin`, `streptomycin`, `neomycin`, `gram`), but you must still show *all 16 bacteria*.
+In this visual you may show a *subset* of the variables (`penicillin`,
+`streptomycin`, `neomycin`, `gram`), but you must still show *all 16
+bacteria*.
 
-Note that your visual must be *qualitatively different* from *all* of your other visuals.
+Note that your visual must be *qualitatively different* from *all* of
+your other visuals.
 
 ```{r q1.5}
-# WRITE YOUR CODE HERE
+ggplot(
+  df_antibiotics,
+  aes(
+    x = penicillin,
+    y = reorder(bacteria, penicillin),
+    color = gram
+  )
+) +
+  geom_segment(
+    aes(
+      x = 0,
+      xend = penicillin,
+      yend = bacteria
+    ),
+    linewidth = 1
+  ) +
+  geom_point(size = 4) +
+  scale_x_log10() +
+  labs(
+    x = "Penicillin effectiveness (log scale)",
+    y = "Bacteria",
+    color = "Gram"
+  ) +
+  theme_minimal()
 ```
 
-### __q2__ Assess your visuals
+### **q2** Assess your visuals
 
-There are **two questions** below; use your five visuals to help answer both Guiding Questions. Note that you must also identify which of your five visuals were most helpful in answering the questions.
+There are **two questions** below; use your five visuals to help answer
+both Guiding Questions. Note that you must also identify which of your
+five visuals were most helpful in answering the questions.
 
-*Hint 1*: It's possible that *none* of your visuals is effective in answering the questions below. You may need to revise one or more of your visuals to answer the questions below!
+*Hint 1*: It's possible that *none* of your visuals is effective in
+answering the questions below. You may need to revise one or more of
+your visuals to answer the questions below!
 
-*Hint 2*: It's **highly unlikely** that the same visual is the most effective at helping answer both guiding questions. **Use this as an opportunity to think about why this is.**
+*Hint 2*: It's **highly unlikely** that the same visual is the most
+effective at helping answer both guiding questions. **Use this as an
+opportunity to think about why this is.**
 
 #### Guiding Question 1
 
-> How do the three antibiotics vary in their effectiveness against bacteria of different genera and Gram stain?
-
-*Observations*
-- What is your response to the question above?
-  - (Write your response here)
-- Which of your visuals above (1 through 5) is **most effective** at helping to answer this question?
-  - (Write your response here)
-- Why?
-  - (Write your response here)
+> > How do the three antibiotics vary in their effectiveness against
+> > bacteria of different genera and Gram stain?
+>
+> *Observations* - What is your response to the question above?
+>
+> The three antibiotics varied greatly in their effectiveness against
+> bacteria from different genera and with different Gram stains.
+> Penicillin appeared to be more effective against Gram-negative
+> bacteria in my results, while the other two antibiotics did not show
+> as clear a preference for either Gram-positive or Gram-negative
+> bacteria. The effectiveness of each antibiotic also varied depending
+> on the bacterial genus, suggesting that different bacteria respond
+> differently to the same antibiotic. However, there were no immediately
+> obvious trends across all the genera.
+>
+> Which of your visuals above (1 through 5) is **most effective** at
+> helping to answer this question? - (Write your response here) - Why?
+>
+> My first visual was most effective at helping answer this question as
+> it clearly showed the effectivness of the bacteria in a comparable way
+> against all the different genera and their strains. We can see its
+> response to penicllin was very similar to streptocaucus viridians and
+> streptocacusi hemolyticus
 
 #### Guiding Question 2
 
-In 1974 *Diplococcus pneumoniae* was renamed *Streptococcus pneumoniae*, and in 1984 *Streptococcus fecalis* was renamed *Enterococcus fecalis* [2].
+In 1974 *Diplococcus pneumoniae* was renamed *Streptococcus pneumoniae*,
+and in 1984 *Streptococcus fecalis* was renamed *Enterococcus fecalis* .
 
-> Why was *Diplococcus pneumoniae* was renamed *Streptococcus pneumoniae*?
+> Why was *Diplococcus pneumoniae* was renamed *Streptococcus
+> pneumoniae*?
 
-*Observations*
-- What is your response to the question above?
-  - (Write your response here)
-- Which of your visuals above (1 through 5) is **most effective** at helping to answer this question?
-  - (Write your response here)
-- Why?
-  - (Write your response here)
+*Observations* - What is your response to the question above?
 
+Its characteristics were found to be more consistent with those of
+bacteria in the genus Streptococcus. In Figure 5, it showed a similar
+response to the penicliin as the other Streptocous species. This
+similarity was also evident in Figure 2 across all antibiotics, which
+suggests that the bacteria shares characteristics with other members of
+the genus. It's important to not however that this is purely speculatory
+based on the limited data we have provided as many things go into the
+classificaiton fo bacteria beyond how they respond to certain
+antibiotics.
+
+Which of your visuals above (1 through 5) is **most effective** at
+helping to answer this question? Why?
+
+Figure 2 was most helpful as it allowed me to clearly see how similar it
+was to the other streptococcus strains across the different antibiotics.
+It was also very helpful that the streptococcus strains were colored
+very similarly to each other.
 
 # References
+
 <!-- -------------------------------------------------- -->
 
-[1] Neomycin in skin infections: A new topical antibiotic with wide antibacterial range and rarely sensitizing. Scope. 1951;3(5):4-7.
+[1] Neomycin in skin infections: A new topical antibiotic with wide
+antibacterial range and rarely sensitizing. Scope. 1951;3(5):4-7.
 
-[2] Wainer and Lysen, "That's Funny..." *American Scientist* (2009) [link](https://www.americanscientist.org/article/thats-funny)
+[2] Wainer and Lysen, "That's Funny..." *American Scientist* (2009)
+[link](https://www.americanscientist.org/article/thats-funny)
