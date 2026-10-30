@@ -593,9 +593,9 @@ quantity of interest for the final task.
 Center](https://islands.smp.uq.edu.au/visitors.php) will be especially
 helpful for getting some ideas.
 
-- (Possible measurement \#1)
-- (Possible measurement \#2)
-- (Possible measurement \#3)
+- Blood cholestrol
+- IQ test scores
+- trancripts
 
 ### **q10** Planning a study (TEAMWORK)
 
@@ -638,13 +638,8 @@ study is observational or experimental.
 
 #### Question / Hypothesis
 
-- (Write your question / hypothesis here)
-  - This could be an observational question, like “How are X and Y
-    related in the population?”
-  - This could be an experimental question, like “What effect does X
-    have on Y in the population?”
-  - What effect does giving participants monetary incentives do on the
-    number of times they can curl a 2kg weight in 30 seconds
+- What effect does giving participants monetary incentives do on the
+  number of times they can curl a 2kg weight in 30 seconds
 
 #### Sampling plan
 
@@ -656,15 +651,36 @@ study is observational or experimental.
     will follow. That way, you can feasibly split up data collection
     among the whole team, while making sure each team member doesn’t
     make ad hoc decisions that introduce bias into your results.
-    - We will number all of the participants and random sampling
+    - We will number all of the residents in Bjurholm, randomly generate
+      60 numbers between 1 & the total number of resiendts.
+    - We will then renumber those selected residents from 1-60 and
+      generate 30 random numbers. This will be the group offered
+      monetary incentive. The other 30 will serve as a control
+    - For the first group, we will ask them to curl the 2 kg dumbell as
+      much as they can in 30 seconds.We will then offer them a monetary
+      incentive to do well on the next task, and ask them to repeat the
+      task. We record the number of curls each participant did initially
+      and after being offered monetary incentive.
+    - For the first group, we will ask them to curl the 2 kg dumbell as
+      much as they can in 30 seconds. We will then ask them to repeat
+      the task. We record the number of curls each participant did
+      initially and after being offered monetary incentive.
 
-- ## (How will you ensure the data is representative of your chosen population?)
+  ## (How will you ensure the data is representative of your chosen population?)
 
 - (For experiments only: How will you ensure any effects you observe are
   due to the treatment, and not due to other factors?)
+
+  - We have a control group that we can compare to
+
+  - We compare the number of curls they do after incentive to an initial
+    baseline they previously established rather than just raw counts
 
 - (How will you choose your sample size?)
 
   - This should be a mix of how confident you want to be in your
     results, and what is actually *feasible* for your research team.
-  - This is a feasible amount fo work for our research team
+  - 60 people is within the scope of work for our research team
+  - We are just trying to observe general impacts of a binary variable
+    (better or worse after offered incentive), so we think this will
+    offer us sufficient confidence for that
