@@ -459,8 +459,10 @@ dates, but there is no strong overall upward or downward trend.
 - Distinctness: The different levels of distinctness show some
   differences in the measured velocities and their spread.
 
-- Overall: The measurements fluctuate around the true speed of light,
-  rather than being exactly equal to it.
+- Overall: The measurements are somewhat close to the true speed of
+  light, but they are not exactly equal to it. They seem to generally be
+  around 150 km/s higher on average than the accepted true value of
+  299792.458 km/s
 
 - These factors may help explain some of the difference between
   Michelson’s estimate and the measured value, but none appears to
