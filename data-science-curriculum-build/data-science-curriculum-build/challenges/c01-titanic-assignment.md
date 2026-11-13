@@ -153,20 +153,17 @@ df_titanic %>% summarize(total = sum(n))
 ``` r
 ## TASK: Visualize counts against `Class` and `Sex`
 ## TODO: Complete this code ``
-ggplot(
-  data = df_titanic |> filter(Survived == "Yes")
-) +
-  geom_col(
+
+df_titanic %>%
+  filter(Survived == "Yes") %>%
+  ggplot(
     mapping = aes(
       x = Class,
       y = n,
-      fill = Sex
-    ),
-    position = "dodge"
-  ) +
+      fill = Sex)) +
+  geom_col(position = "dodge") +
   labs(
-    title = "Survivors by Class and Sex"
-)
+    title = "Survivors by Class and Sex")
 ```
 
 ![](c01-titanic-assignment_files/figure-gfm/q3-task-1.png)<!-- -->
@@ -174,6 +171,10 @@ ggplot(
 **Observations**:
 
 - A roughly equal number of men and women from the third class survived
+
+- When comparing this to Victorian ideals of “women & children first”,
+  it seems quite fishy that so many more men from the crew survived & a
+  roughly equal number of 3rd class men & women survived
 
 - More women survived from the first and second class
 
@@ -225,23 +226,19 @@ df_prop
 ### **q4** Replicate your visual from q3, but display `Prop` in place of `n`. Document your observations, and note any new/different observations you make in comparison with q3. Is there anything *fishy* in your plot?
 
 ``` r
-ggplot(
-  data = df_prop %>%
+df_prop %>%
     filter(Survived == "Yes") %>%
     group_by(Class, Sex) %>%
-    summarise(Prop = sum(n) / sum(Total))
-) +
-  geom_col(
+    summarise(Prop = sum(n) / sum(Total)) %>%
+  ggplot(
     mapping = aes(
       x = Class,
       y = Prop,
-      fill = Sex
-    ),
-    position = "dodge"
-  ) +
+      fill = Sex)
+    ) + 
+    geom_col(position = "dodge") +
   labs(
-    title = "Proportion of Survivors by Class and Sex"
-  )
+    title = "Proportion of Survivors by Class and Sex")
 ```
 
     ## `summarise()` has regrouped the output.
@@ -259,6 +256,14 @@ ggplot(
   that may have influenced survival
 - The story looks very different when you consider the number of
   survivors with respect to the total number of men/women in each class
+  - Using the number of survivors doesn’t account for the differences in
+    population
+    - From previous graph, it emphasizes that more men from the crew
+      survived & roughly equal number of 3rd class passengers
+    - This graph shows, how although that was true, the proportion of
+      female crew and passengers that survived was much higher than men
+    - Previous graph doesn’t hihgligh differences in survival for men &
+      women as effectively
 - A small difference in the number of survivors can create a significant
   change in a small group (such as female crew)
 
@@ -268,15 +273,16 @@ ggplot(
 additional variables!
 
 ``` r
+df_prop %>%
+  filter(Survived == "Yes") %>%
 ggplot(
-  data = df_prop %>% filter(Survived == "Yes")
-) +
-  geom_col(
-    mapping = aes(
+  mapping = aes(
       x = Class,
       y = Prop,
       fill = Sex
-    ),
+    )
+) +
+  geom_col(
     position = "dodge"
   ) +
   facet_wrap(~ Age) +
