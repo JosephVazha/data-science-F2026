@@ -128,7 +128,7 @@ q2 |>
 
 - Write your challenges and your approach to solving them
   - The graph was initially not scaled well on the y-axis
-    - Set the limit on gdp per capita to 20,000, elimintated an outliter in Asia (Kuwait with 108,384.4 gdp per cap)
+    - Set the limit on gdp per capita to 20,000, which cut off an outliter in Asia from the graph (Kuwait with 108,384.4 gdp per cap)
   - We can observe the presence of several outliers, indicated by dots in the box plot
 
 ### **q3** You should have found *at least* three outliers in q2 (but possibly many more!). Identify those outliers (figure out which countries they are).
