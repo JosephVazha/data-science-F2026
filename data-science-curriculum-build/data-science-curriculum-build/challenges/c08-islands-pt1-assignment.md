@@ -130,8 +130,12 @@ you still need to count, because your numbers *will* be different!
   - 623/625 = 99.68%
 - Are there any sources of *real* uncertainty in the percent occupied
   you calculated?
-  - There are no sources of real uncertainty in the percent occupied
-    that I calculated.
+  - The state of the islanders population changes over time (people are
+    born, die, and move around.
+    - Could lead to a source of uncertainty if people moved homes during
+      data collection (while counting)
+    - If we are making any statements regarding the % occupation after
+      data collection
 - Are there any sources of *erroneous* uncertainty in the percent
   occupied you calculated?
   - If I miscounted, that could be a source of erroneous uncertainty
