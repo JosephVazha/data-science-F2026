@@ -682,26 +682,64 @@ pr_level <- 0.8
 #        use the validation data to check your uncertainty estimates, and 
 #        make a recommendation on a *dependable range* of values for T_norm
 #        at the point `df_design`
-fit_q6 <- NA
+fit_q6 <- lm(
+  T_norm ~ . - x - L - W - U_0,
+  data = df_psaap
+)
+
+df_q6 <- df_psaap %>%
+  mutate(
+    x = 1.0,
+    L = 0.2,
+    W = 0.04,
+    U_0 = 1.0
+  ) %>%
+  add_uncertainties(
+    fit_q6,
+    interval = "prediction",
+    level = pr_level,
+    prefix = "pi"
+  )
+
+df_q6 %>%
+  summarise(
+    coverage = mean(T_norm >= pi_lwr & T_norm <= pi_upr),
+    Lower_Bound = min(pi_lwr),
+    Upper_Bound = max(pi_upr)
+  )
 ```
+
+    ## # A tibble: 1 × 3
+    ##   coverage Lower_Bound Upper_Bound
+    ##      <dbl>       <dbl>       <dbl>
+    ## 1    0.893      0.0103        2.18
 
 **Recommendation**:
 
 - How much do you trust your model? Why?
-  - (Your response here)
+  - We trust our model reasonably well
+  - Coverage = Number of observations within the predicted interval is
+    80%
 - What kind of interval—confidence or prediction—would you use for this
   task, and why?
-  - (Your response here)
+  - Predication interval
+    - team building around a single prototype to estimate range of
+      T_norm vals
+    - Accounts for uncertainty in estimated mean and natural variation
+      inr esults
 - What fraction of validation cases lie within the intervals you
   predict? (NB. Make sure to calculate your intervals *based on the
   validation data*; don’t just use one single interval!) How does this
   compare with `pr_level`?
-  - (Your response here)
+  - 89.2%
 - What interval for `T_norm` would you recommend the design team to plan
   around?
-  - (Your response here)
+  - \[0.01, 2.175\]
 - Are there any other recommendations you would provide?
-  - (Your response here)
+  - Safety margin
+  - Safety mechanisms
+  - Collecting additional data
+  - Considering tolerancing
 
 *Bonus*: One way you could take this analysis further is to recommend
 which other variables the design team should tightly control. You could
