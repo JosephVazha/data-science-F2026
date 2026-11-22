@@ -28,7 +28,7 @@ Unlike exercises, **challenges will be graded**. The following rubrics define ho
 <!-- ------------------------- -->
 
 | Category | Needs Improvement | Satisfactory |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | Effort | Some task **q**'s left unattempted | All task **q**'s attempted |
 | Observed | Did not document observations, or observations incorrect | Documented correct observations based on analysis |
 | Supported | Some observations not clearly supported by analysis | All observations clearly supported by analysis (table, graph, etc.) |
@@ -96,7 +96,7 @@ The Islands allows you to ask islanders to complete tasks. If you just take meas
 - (How will you ensure the data is representative of your chosen population?)
   - The scraped roster is a complete sampling frame, so every resident has an equal chance of selection. Drawing with `sample()` rather than picking by hand keeps collectors from choosing convenient participants.
 - (For experiments only: How will you ensure any effects you observe are due to the treatment, and not due to other factors?)
-  - Treatment is randomly assigned, so the two arms should be alike on everything except the incentive.
+  - Treatment (incentive for the second set of curls) is randomly assigned, so there are no systematic differences between the experimental and control group though chance imbalances may occur
   - Each person is measured before and after, so they serve as their own baseline and we analyze change scores.
   - We record age and sex so we can check afterwards whether randomization actually balanced the arms.
 - How will you choose your sample size?

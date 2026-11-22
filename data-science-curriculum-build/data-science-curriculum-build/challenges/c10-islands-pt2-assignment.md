@@ -156,8 +156,9 @@ study is observational or experimental.
     participants.
 - (For experiments only: How will you ensure any effects you observe are
   due to the treatment, and not due to other factors?)
-  - Treatment is randomly assigned, so the two arms should be alike on
-    everything except the incentive.
+  - Treatment (incentive for the second set of curls) is randomly
+    assigned, so there are no systematic differences between the
+    experimental and control group though chance imbalances may occur
   - Each person is measured before and after, so they serve as their own
     baseline and we analyze change scores.
   - We record age and sex so we can check afterwards whether
